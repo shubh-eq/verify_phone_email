@@ -1,17 +1,23 @@
+import validation.*;
+
 public class Person {
     String name;
     Address address;
     String email;
     String phone;
     String salary;
-    Person manager = null;
+    Person manager;
 
     private void verifyEmail(String email){
-//        throw new IllegalArgumentException("Invalid Email ID");
+        if(!EmailValidation.isValid(email)){
+            throw new IllegalArgumentException("Invalid Email ID");
+        }
     }
 
     private void verifyPhone(String phone){
-//        throw new IllegalArgumentException("Invalid Phone");
+        if(!PhoneValidation.isValid(phone)){
+            throw new IllegalArgumentException("Invalid Phone");
+        }
     }
 
     public Person(String name,Address address, String email, String phone, String salary, Person manager){
@@ -28,4 +34,21 @@ public class Person {
         this.salary = salary;
         this.manager = manager;
     }
+
+    //Used for Creating Initial Manager
+    public Person(String name,Address address, String email, String phone, String salary){
+        //Verification of email
+        verifyEmail(email);
+
+        //Verification of phone
+        verifyPhone(phone);
+
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.salary = salary;
+        this.manager = null;
+    }
+
 }
