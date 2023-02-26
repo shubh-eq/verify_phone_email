@@ -20,6 +20,17 @@ public class Person {
         }
     }
 
+    public void printPersonHierarchy(Person p){
+        if(p==null){
+            return;
+        }
+        printPersonHierarchy(p.manager);
+        System.out.println(p.name);
+        if(!p.equals(this)){
+            System.out.println("   ↓   ");
+        }
+    }
+
     public Person(String name,Address address, String email, String phone, String salary, Person manager){
         //Verification of email
         verifyEmail(email);

@@ -10,6 +10,8 @@ public class Main {
             //Creating Employee 1
             Person employee1 = new Person("person1",addr,"employee1@example.com","9132456789","100",manager1);
 
+            employee1.printPersonHierarchy(employee1);
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
